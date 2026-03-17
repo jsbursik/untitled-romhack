@@ -790,6 +790,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_HISUIAN_FORMS
+    #if P_HISUIAN_SAMUROTT
     [SPECIES_SAMUROTT_HISUI] =
     {
         .baseHP        = 90,
@@ -854,6 +855,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sSamurottHisuiTeachableLearnset,
         .formSpeciesIdTable = sSamurottFormSpeciesIdTable,
     },
+    #endif //P_HISUIAN_SAMUROTT
 #endif //P_HISUIAN_FORMS
 #endif //P_FAMILY_OSHAWOTT
 
@@ -4419,6 +4421,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_HISUIAN_FORMS
+    #if P_HISUIAN_LILLIGANT
     [SPECIES_LILLIGANT_HISUI] =
     {
         .baseHP        = 70,
@@ -4486,6 +4489,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sLilligantHisuiTeachableLearnset,
         .formSpeciesIdTable = sLilligantFormSpeciesIdTable,
     },
+    #endif //P_HISUIAN_LILLIGANT
 #endif //P_HISUIAN_FORMS
 #endif //P_FAMILY_PETILIL
 
@@ -5241,6 +5245,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_GALARIAN_FORMS
+    #if P_GALARIAN_DARUMAKA
     [SPECIES_DARUMAKA_GALAR] =
     {
         .baseHP        = 70,
@@ -5431,6 +5436,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .formSpeciesIdTable = sDarmanitanFormSpeciesIdTable,
         .formChangeTable = sDarmanitanGalarFormChangeTable,
     },
+    #endif //P_GALARIAN_DARUMAKA
 #endif //P_GALARIAN_FORMS
 #endif //P_FAMILY_DARUMAKA
 
@@ -6082,6 +6088,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_GALARIAN_FORMS
+    #if P_GALARIAN_YAMASK
     [SPECIES_YAMASK_GALAR] =
     {
         .baseHP        = 38,
@@ -6214,6 +6221,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sRunerigusLevelUpLearnset,
         .teachableLearnset = sRunerigusTeachableLearnset,
     },
+    #endif //P_GALARIAN_YAMASK
 #endif //P_GALARIAN_FORMS
 #endif //P_FAMILY_YAMASK
 
@@ -6858,6 +6866,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_HISUIAN_FORMS
+    #if P_HISUIAN_ZORUA
     [SPECIES_ZORUA_HISUI] =
     {
         .baseHP        = 35,
@@ -6990,6 +6999,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sZoroarkHisuiTeachableLearnset,
         .formSpeciesIdTable = sZoroarkFormSpeciesIdTable,
     },
+    #endif //P_HISUIAN_ZORUA
 #endif //P_HISUIAN_FORMS
 #endif //P_FAMILY_ZORUA
 
@@ -10923,6 +10933,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_GALARIAN_FORMS
+    #if P_GALARIAN_STUNFISK
     [SPECIES_STUNFISK_GALAR] =
     {
         .baseHP        = 109,
@@ -10989,6 +11000,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .eggMoveLearnset = sStunfiskGalarEggMoveLearnset,
         .formSpeciesIdTable = sStunfiskFormSpeciesIdTable,
     },
+    #endif //P_GALARIAN_STUNFISK
 #endif //P_GALARIAN_FORMS
 #endif //P_FAMILY_STUNFISK
 
@@ -11834,6 +11846,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     },
 
 #if P_HISUIAN_FORMS
+    #if P_HISUIAN_BRAVIARY
     [SPECIES_BRAVIARY_HISUI] =
     {
         .baseHP        = 110,
@@ -11898,6 +11911,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sBraviaryHisuiTeachableLearnset,
         .formSpeciesIdTable = sBraviaryFormSpeciesIdTable,
     },
+    #endif //P_HISUIAN_BRAVIARY
 #endif //P_HISUIAN_FORMS
 #endif //P_FAMILY_RUFFLET
 

@@ -210,6 +210,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
     },
 
 #if P_HISUIAN_FORMS
+    #if P_HISUIAN_DECIDUEYE
     [SPECIES_DECIDUEYE_HISUI] =
     {
         .baseHP        = 88,
@@ -274,6 +275,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .teachableLearnset = sDecidueyeHisuiTeachableLearnset,
         .formSpeciesIdTable = sDecidueyeFormSpeciesIdTable,
     },
+    #endif //P_HISUIAN_DECIDUEYE
 #endif //P_HISUIAN_FORMS
 #endif //P_FAMILY_ROWLET
 

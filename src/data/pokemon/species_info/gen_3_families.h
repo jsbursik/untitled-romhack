@@ -1241,6 +1241,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     },
 
 #if P_GALARIAN_FORMS
+    #if P_GALARIAN_ZIGZAGOON
     [SPECIES_ZIGZAGOON_GALAR] =
     {
         .baseHP        = 38,
@@ -1436,6 +1437,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sObstagoonLevelUpLearnset,
         .teachableLearnset = sObstagoonTeachableLearnset,
     },
+    #endif //P_GALARIAN_ZIGZAGOON
 #endif //P_GALARIAN_FORMS
 #endif //P_FAMILY_ZIGZAGOON
 

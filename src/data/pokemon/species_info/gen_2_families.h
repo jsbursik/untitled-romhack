@@ -505,6 +505,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     },
 
 #if P_HISUIAN_FORMS
+    #if P_HISUIAN_TYPHLOSION
     [SPECIES_TYPHLOSION_HISUI] =
     {
         .baseHP        = 73,
@@ -569,6 +570,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sTyphlosionHisuiTeachableLearnset,
         .formSpeciesIdTable = sTyphlosionFormSpeciesIdTable,
     },
+    #endif //P_HISUIAN_TYPHLOSION
 #endif //P_HISUIAN_FORMS
 #endif //P_FAMILY_CYNDAQUIL
 
@@ -3589,6 +3591,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     },
 
 #if P_PALDEAN_FORMS
+    #if P_PALDEAN_WOOPER
     [SPECIES_WOOPER_PALDEA] =
     {
         .baseHP        = 55,
@@ -3718,6 +3721,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sClodsireLevelUpLearnset,
         .teachableLearnset = sClodsireTeachableLearnset,
     },
+    #endif //P_PALDEAN_WOOPER
 #endif //P_PALDEAN_FORMS
 #endif //P_FAMILY_WOOPER
 
@@ -5196,6 +5200,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     },
 
 #if P_HISUIAN_FORMS
+    #if P_HISUIAN_QWILFISH
     [SPECIES_QWILFISH_HISUI] =
     {
         .baseHP        = 65,
@@ -5329,6 +5334,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sOverqwilLevelUpLearnset,
         .teachableLearnset = sOverqwilTeachableLearnset,
     },
+    #endif //P_HISUIAN_QWILFISH
 #endif //P_HISUIAN_FORMS
 #endif //P_FAMILY_QWILFISH
 
@@ -5747,6 +5753,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 #endif //P_GEN_4_CROSS_EVOS
 
 #if P_HISUIAN_FORMS
+    #if P_HISUIAN_SNEASEL
     [SPECIES_SNEASEL_HISUI] =
     {
         .baseHP        = 55,
@@ -5893,6 +5900,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sSneaslerLevelUpLearnset,
         .teachableLearnset = sSneaslerTeachableLearnset,
     },
+    #endif //P_HISUIAN_SNEASEL
 #endif //P_HISUIAN_FORMS
 #endif //P_FAMILY_SNEASEL
 
@@ -6662,6 +6670,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     },
 
 #if P_GALARIAN_FORMS
+    #if P_GALARIAN_CORSOLA
     [SPECIES_CORSOLA_GALAR] =
     {
         .baseHP        = 60,
@@ -6792,6 +6801,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sCursolaLevelUpLearnset,
         .teachableLearnset = sCursolaTeachableLearnset,
     },
+    #endif //P_GALARIAN_CORSOLA
 #endif //P_GALARIAN_FORMS
 #endif //P_FAMILY_CORSOLA
 

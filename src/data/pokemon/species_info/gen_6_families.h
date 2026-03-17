@@ -5288,6 +5288,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
     },
 
 #if P_HISUIAN_FORMS
+    #if P_HISUIAN_SLIGGOO
     [SPECIES_SLIGGOO_HISUI] =
     {
         .baseHP        = 58,
@@ -5422,6 +5423,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .teachableLearnset = sGoodraHisuiTeachableLearnset,
         .formSpeciesIdTable = sGoodraFormSpeciesIdTable,
     },
+    #endif //P_HISUIAN_SLIGGOO
 #endif //P_HISUIAN_FORMS
 #endif //P_FAMILY_GOOMY
 
@@ -6322,6 +6324,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
     },
 
 #if P_HISUIAN_FORMS
+    #if P_HISUIAN_AVALUGG
     [SPECIES_AVALUGG_HISUI] =
     {
         .baseHP        = 95,
@@ -6385,6 +6388,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .teachableLearnset = sAvaluggHisuiTeachableLearnset,
         .formSpeciesIdTable = sAvaluggFormSpeciesIdTable,
     },
+    #endif //P_HISUIAN_AVALUGG
 #endif //P_HISUIAN_FORMS
 #endif //P_FAMILY_BERGMITE
 
