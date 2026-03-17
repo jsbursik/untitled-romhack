@@ -217,6 +217,7 @@ void NewGameInitData(void)
 #if IS_FRLG
         StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
 #endif
+    FlagSet(FLAG_SYS_B_DASH);
     ResetMiniGamesRecords();
     InitUnionRoomChatRegisteredTexts();
     InitLilycoveLady();
