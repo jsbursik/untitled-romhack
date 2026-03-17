@@ -2213,14 +2213,19 @@ static void CreatePokedexList(u8 dexMode, u8 order)
     case ORDER_NUMERICAL:
         if (temp_isHoennDex)
         {
+            s16 listIndex = 0;
             for (i = 0; i < temp_dexCount; i++)
             {
                 temp_dexNum = RegionalToNationalOrder(i + 1);
-                sPokedexView->pokedexList[i].dexNum = temp_dexNum;
-                sPokedexView->pokedexList[i].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
-                sPokedexView->pokedexList[i].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
-                if (sPokedexView->pokedexList[i].seen)
-                    sPokedexView->pokemonListCount = i + 1;
+                // Skip disabled species (natDexNum == 0 means species doesn't exist)
+                if (temp_dexNum == 0 || gSpeciesInfo[temp_dexNum].natDexNum == 0)
+                    continue;
+                sPokedexView->pokedexList[listIndex].dexNum = temp_dexNum;
+                sPokedexView->pokedexList[listIndex].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
+                sPokedexView->pokedexList[listIndex].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
+                if (sPokedexView->pokedexList[listIndex].seen)
+                    sPokedexView->pokemonListCount = listIndex + 1;
+                listIndex++;
             }
         }
         else
