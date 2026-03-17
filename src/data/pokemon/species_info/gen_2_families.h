@@ -1609,7 +1609,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 
 #if P_FAMILY_TOGEPI
 #define TOGEPI_FAMILY_TYPE1 (P_UPDATED_TYPES >= GEN_6 ? TYPE_FAIRY : TYPE_NORMAL)
-
+    #if P_TOGEPI
     [SPECIES_TOGEPI] =
     {
         .baseHP        = 35,
@@ -1679,6 +1679,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .eggMoveLearnset = sTogepiEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_TOGETIC, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD})}),
     },
+    #endif //P_TOGEPI
 
     [SPECIES_TOGETIC] =
     {
@@ -2292,6 +2293,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 
 #if P_FAMILY_MARILL
 #if P_GEN_3_CROSS_EVOS
+    #if P_AZURILL
     [SPECIES_AZURILL] =
     {
         .baseHP        = 50,
@@ -2368,6 +2370,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .eggMoveLearnset = sAzurillEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_MARILL, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD})}),
     },
+    #endif //P_AZURILL
 #endif //P_GEN_3_CROSS_EVOS
 
     [SPECIES_MARILL] =
@@ -2528,6 +2531,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 
 #if P_FAMILY_SUDOWOODO
 #if P_GEN_4_CROSS_EVOS
+    #if P_BONSLY
     [SPECIES_BONSLY] =
     {
         .baseHP        = 50,
@@ -2598,6 +2602,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .eggMoveLearnset = sBonslyEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_SUDOWOODO, CONDITIONS({IF_KNOWS_MOVE, MOVE_MIMIC})}),
     },
+    #endif //P_BONSLY
 #endif //P_GEN_4_CROSS_EVOS
 
     [SPECIES_SUDOWOODO] =
@@ -4143,6 +4148,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 
 #if P_FAMILY_WOBBUFFET
 #if P_GEN_3_CROSS_EVOS
+    #if P_WYNAUT
     [SPECIES_WYNAUT] =
     {
         .baseHP        = 95,
@@ -4214,6 +4220,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sWynautTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 15, SPECIES_WOBBUFFET}),
     },
+    #endif //P_WYNAUT
 #endif //P_GEN_3_CROSS_EVOS
 
     [SPECIES_WOBBUFFET] =
@@ -6060,133 +6067,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sUrsaringLevelUpLearnset,
         .teachableLearnset = sUrsaringTeachableLearnset,
-    #if P_GEN_8_CROSS_EVOS
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_PEAT_BLOCK, SPECIES_URSALUNA, CONDITIONS({IF_REGION, REGION_HISUI}, {IF_TIME, TIME_NIGHT})},
-                                {EVO_NONE, 0, SPECIES_URSALUNA_BLOODMOON}),
-    #endif
     },
-
-#if P_GEN_8_CROSS_EVOS
-    [SPECIES_URSALUNA] =
-    {
-        .baseHP        = 130,
-        .baseAttack    = 140,
-        .baseDefense   = 105,
-        .baseSpeed     = 50,
-        .baseSpAttack  = 45,
-        .baseSpDefense = 80,
-        .types = MON_TYPES(TYPE_GROUND, TYPE_NORMAL),
-        .catchRate = 20,
-        .expYield = 275,
-        .evYield_Attack = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_GUTS, ABILITY_BULLETPROOF, ABILITY_UNNERVE },
-        .bodyColor = BODY_COLOR_BROWN,
-        .noFlip = TRUE,
-        .speciesName = _("Ursaluna"),
-        .cryId = CRY_URSALUNA,
-        .natDexNum = NATIONAL_DEX_URSALUNA,
-        .categoryName = _("Peat"),
-        .height = 24,
-        .weight = 2900,
-        .description = COMPOUND_STRING(
-            "Swampy terrain gives Ursaluna its burly\n"
-            "physique and newfound capacity to\n"
-            "manipulate peat at will."),
-        .pokemonScale = 256,
-        .pokemonOffset = 3,
-        .trainerScale = 369,
-        .trainerOffset = 7,
-        .frontPic = gMonFrontPic_Ursaluna,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 3,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_Ursaluna,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 9,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_Ursaluna,
-        .shinyPalette = gMonShinyPalette_Ursaluna,
-        .iconSprite = gMonIcon_Ursaluna,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(1, 4, SHADOW_SIZE_XL_BATTLE_ONLY)
-        FOOTPRINT(Ursaluna)
-        OVERWORLD(
-            sPicTable_Ursaluna,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gOverworldPalette_Ursaluna,
-            gShinyOverworldPalette_Ursaluna
-        )
-        .levelUpLearnset = sUrsalunaLevelUpLearnset,
-        .teachableLearnset = sUrsalunaTeachableLearnset,
-        .formSpeciesIdTable = sUrsalunaFormSpeciesIdTable,
-    },
-
-    [SPECIES_URSALUNA_BLOODMOON] =
-    {
-        .baseHP        = 113,
-        .baseAttack    = 70,
-        .baseDefense   = 120,
-        .baseSpeed     = 52,
-        .baseSpAttack  = 135,
-        .baseSpDefense = 65,
-        .types = MON_TYPES(TYPE_GROUND, TYPE_NORMAL),
-        .catchRate = 5,
-        .expYield = 278,
-        .evYield_SpAttack = 3,
-        .genderRatio = MON_MALE,
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_FAST,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_MINDS_EYE, ABILITY_NONE, ABILITY_NONE },
-        .bodyColor = BODY_COLOR_BROWN,
-        .noFlip = TRUE,
-        .speciesName = _("Ursaluna"),
-        .cryId = CRY_URSALUNA_BLOODMOON,
-        .natDexNum = NATIONAL_DEX_URSALUNA,
-        .categoryName = _("Peat"),
-        .height = 27,
-        .weight = 3330,
-        .description = COMPOUND_STRING(
-            "It crossed the sea and drifted\n"
-            "ashore in a new land. Surviving in this\n"
-            "place led it to take on a unique\n"
-            "appearance and gain special powers."),
-        .pokemonScale = 256,
-        .pokemonOffset = 3,
-        .trainerScale = 369,
-        .trainerOffset = 7,
-        .frontPic = gMonFrontPic_UrsalunaBloodmoon,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 0,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
-        .backPic = gMonBackPic_UrsalunaBloodmoon,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 9,
-        //.backAnimId = BACK_ANIM_NONE,
-        .palette = gMonPalette_UrsalunaBloodmoon,
-        .shinyPalette = gMonShinyPalette_UrsalunaBloodmoon,
-        .iconSprite = gMonIcon_UrsalunaBloodmoon,
-        .iconPalIndex = 2,
-        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
-        SHADOW(6, 11, SHADOW_SIZE_L)
-        FOOTPRINT(Ursaluna)
-        .levelUpLearnset = sUrsalunaBloodmoonLevelUpLearnset,
-        .teachableLearnset = sUrsalunaBloodmoonTeachableLearnset,
-        .formSpeciesIdTable = sUrsalunaFormSpeciesIdTable,
-    },
-#endif //P_GEN_8_CROSS_EVOS
 #endif //P_FAMILY_TEDDIURSA
 
 #if P_FAMILY_SLUGMA
@@ -7040,6 +6921,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 
 #if P_FAMILY_MANTINE
 #if P_GEN_4_CROSS_EVOS
+    #if P_MANTYKE
     [SPECIES_MANTYKE] =
     {
         .baseHP        = 45,
@@ -7109,6 +6991,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .eggMoveLearnset = sMantykeEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_MANTINE, CONDITIONS({IF_SPECIES_IN_PARTY, SPECIES_REMORAID})}),
     },
+    #endif //P_MANTYKE
 #endif //P_GEN_4_CROSS_EVOS
 
     [SPECIES_MANTINE] =

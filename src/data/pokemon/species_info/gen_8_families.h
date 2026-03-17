@@ -3351,6 +3351,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
 #endif //P_FAMILY_ARROKUDA
 
 #if P_FAMILY_TOXEL
+    #if P_TOXEL
     [SPECIES_TOXEL] =
     {
         .baseHP        = 40,
@@ -3416,6 +3417,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_TOXTRICITY_AMPED, CONDITIONS({IF_AMPED_NATURE})},
                                 {EVO_LEVEL, 30, SPECIES_TOXTRICITY_LOW_KEY, CONDITIONS({IF_LOW_KEY_NATURE})}),
     },
+    #endif //P_TOXEL
 
     [SPECIES_TOXTRICITY_AMPED] =
     {

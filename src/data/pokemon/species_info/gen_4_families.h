@@ -4592,6 +4592,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 #endif //P_FAMILY_GIBLE
 
 #if P_FAMILY_RIOLU
+    #if P_RIOLU
     [SPECIES_RIOLU] =
     {
         .baseHP        = 40,
@@ -4661,6 +4662,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .eggMoveLearnset = sRioluEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_LUCARIO, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD},{IF_NOT_TIME, TIME_NIGHT})}),
     },
+    #endif //P_RIOLU
 
     [SPECIES_LUCARIO] =
     {
