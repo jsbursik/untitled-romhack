@@ -218,6 +218,7 @@ void NewGameInitData(void)
         StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
 #endif
     FlagSet(FLAG_SYS_B_DASH);
+    FlagSet(FLAG_RUNNING_SHOES_TOGGLE);
     ResetMiniGamesRecords();
     InitUnionRoomChatRegisteredTexts();
     InitLilycoveLady();

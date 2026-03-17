@@ -927,21 +927,56 @@ static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
      && !FollowerNPCComingThroughDoor()
      && (I_ORAS_DOWSING_FLAG == 0 || (I_ORAS_DOWSING_FLAG != 0 && !FlagGet(I_ORAS_DOWSING_FLAG))))
     {
+        if (gRunToggleBtnSet)
+        {
+            gRunToggleBtnSet = FALSE;
+            if (FlagGet(FLAG_RUNNING_SHOES_TOGGLE) == FALSE)
+            {
+                FlagSet(FLAG_RUNNING_SHOES_TOGGLE);
+                if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
+                    PlayerRunSlow(direction);
+                else
+                    PlayerRun(direction);
+                gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+                return;
+            }
+            else
+            {
+                FlagClear(FLAG_RUNNING_SHOES_TOGGLE);
+                if (!(heldKeys & B_BUTTON))
+                {
+                    if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
+                        PlayerWalkSlowStairs(direction);
+                    else
+                        PlayerWalkNormal(direction);
+                }
+                else
+                {
+                    if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
+                        PlayerRunSlow(direction);
+                    else
+                        PlayerRun(direction);
+                    gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
+                }
+                return;
+            }
+        }
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerRunSlow(direction);
         else
             PlayerRun(direction);
-
         gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
         return;
     }
     else if (FlagGet(DN_FLAG_SEARCHING) && (heldKeys & A_BUTTON))
     {
+        gRunToggleBtnSet = FALSE;
         gPlayerAvatar.creeping = TRUE;
         PlayerWalkSlow(direction);
     }
     else
     {
+        gRunToggleBtnSet = FALSE;
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerWalkSlowStairs(direction);
         else
