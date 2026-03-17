@@ -62,4 +62,31 @@
 #define P_PALDEAN_WOOPER            FALSE // Gen 2 � Clodsire
 #define P_PALDEAN_TAUROS            TRUE  // Gen 1 Combat / Blaze / Aqua breeds
 
+// -----------------------------------------------
+// Baby Pokemon Cross Evos
+// -----------------------------------------------
+// Gen 2
+#define P_PICHU                     TRUE  // Gen 1
+#define P_CLEFFA                    FALSE // Gen 1
+#define P_IGGLYBUFF                 FALSE // Gen 1
+#define P_TOGEPI                    TRUE  // Gen 2
+#define P_TYROGUE                   TRUE  // Gen 1
+#define P_SMOOCHUM                  FALSE // Gen 1
+#define P_ELEKID                    TRUE  // Gen 1
+#define P_MAGBY                     TRUE  // Gen 1
+// Gen 3
+#define P_AZURILL                   TRUE  // Gen 2
+#define P_WYNAUT                    TRUE  // Gen 2
+// Gen 4
+#define P_BUDEW                     FALSE // Gen 3
+#define P_CHINGLING                 FALSE
+#define P_BONSLY                    FALSE // Gen 2
+#define P_MIME_JR                   FALSE // Gen 1
+#define P_HAPPINY                   FALSE // Gen 1
+#define P_MUNCHLAX                  FALSE // Gen 1
+#define P_RIOLU                     TRUE  // Gen 4
+#define P_MANTYKE                   FALSE // Gen 2
+// Gen 8
+#define P_TOXEL                     TRUE  // Gen 8
+
 #endif // GUARD_CONFIG_SPECIES_CUSTOM_H
