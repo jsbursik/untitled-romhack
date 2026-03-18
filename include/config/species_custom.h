@@ -87,6 +87,6 @@
 #define P_RIOLU                     TRUE  // Gen 4
 #define P_MANTYKE                   FALSE // Gen 2
 // Gen 8
-#define P_TOXEL                     TRUE  // Gen 8
+#define P_TOXEL                     FALSE // Gen 8
 
 #endif // GUARD_CONFIG_SPECIES_CUSTOM_H
