@@ -213,7 +213,7 @@
 #define P_FAMILY_PLUSLE                  P_GEN_3_POKEMON
 #define P_FAMILY_MINUN                   P_GEN_3_POKEMON
 #define P_FAMILY_VOLBEAT_ILLUMISE        FALSE
-#define P_FAMILY_ROSELIA                 FALSE
+#define P_FAMILY_ROSELIA                 P_GEN_3_POKEMON
 #define P_FAMILY_GULPIN                  FALSE
 #define P_FAMILY_CARVANHA                P_GEN_3_POKEMON
 #define P_FAMILY_WAILMER                 P_GEN_3_POKEMON
