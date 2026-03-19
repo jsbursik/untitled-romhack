@@ -243,6 +243,7 @@ static void MainMenu_FormatSavegamePlayer(void);
 static void MainMenu_FormatSavegamePokedex(void);
 static void MainMenu_FormatSavegameTime(void);
 static void MainMenu_FormatSavegameBadges(void);
+static void Task_SkipIntro(u8);
 
 // .rodata
 
@@ -1090,7 +1091,11 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
 
             gPlttBufferUnfaded[0] = RGB_BLACK;
             gPlttBufferFaded[0] = RGB_BLACK;
-            gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
+            #if !SKIP_INTRO
+                gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
+            #else
+                gTasks[taskId].func = Task_SkipIntro;
+            #endif
             break;
         case ACTION_CONTINUE:
             gPlttBufferUnfaded[0] = RGB_BLACK;
@@ -2307,6 +2312,18 @@ static void Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox(u8 taskId)
         DrawDialogFrameWithCustomTile(0, TRUE, BIRCH_DLG_BASE_TILE_NUM);
         gTasks[taskId].func = Task_NewGameBirchSpeech_SoItsPlayerName;
     }
+}
+
+static void Task_SkipIntro(u8 taskId)
+{
+    static const u8 sPlayerName[] = _("Jordan");
+
+    gSaveBlock2Ptr->playerGender = MALE;
+    StringCopy(gSaveBlock2Ptr->playerName, sPlayerName);
+
+    FreeAllWindowBuffers();
+    SetMainCallback2(CB2_NewGame);
+    DestroyTask(taskId);
 }
 
 #undef tTimer
