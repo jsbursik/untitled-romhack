@@ -50,15 +50,21 @@
 #include "constants/items.h"
 #include "difficulty.h"
 #include "follower_npc.h"
+#include "script_pokemon_util.h"
+#include "constants/species.h"
+#include "constants/field_tasks.h"
+#include "palette.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 extern const u8 EventScript_ResetAllMapFlagsFrlg[];
 
 static void ClearFrontierRecord(void);
-static void WarpToTruck(void);
 static void ResetMiniGamesRecords(void);
 static void ResetItemFlags(void);
 static void ResetDexNav(void);
+static void WarpToTruck(void);
+static void WarpToRoute101(void);
+static void SetupSkipIntroState(void);
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
 EWRAM_DATA bool8 gEnableContestDebugging = FALSE;
@@ -209,7 +215,11 @@ void NewGameInitData(void)
     InitDewfordTrend();
     ResetFanClub();
     ResetLotteryCorner();
-    WarpToTruck();
+    #if !SKIP_INTRO
+        WarpToTruck();
+    #else
+        WarpToRoute101();
+    #endif
     if (IS_FRLG)
         RunScriptImmediately(EventScript_ResetAllMapFlagsFrlg);
     else
@@ -217,8 +227,6 @@ void NewGameInitData(void)
 #if IS_FRLG
         StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
 #endif
-    FlagSet(FLAG_SYS_B_DASH);
-    FlagSet(FLAG_RUNNING_SHOES_TOGGLE);
     ResetMiniGamesRecords();
     InitUnionRoomChatRegisteredTexts();
     InitLilycoveLady();
@@ -234,6 +242,9 @@ void NewGameInitData(void)
     ResetItemFlags();
     ResetDexNav();
     ClearFollowerNPCData();
+    #if SKIP_INTRO
+        SetupSkipIntroState();
+    #endif
 }
 
 static void ResetMiniGamesRecords(void)
@@ -257,4 +268,49 @@ static void ResetDexNav(void)
     memset(gSaveBlock3Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock3Ptr->dexNavSearchLevels));
 #endif
     gSaveBlock3Ptr->dexNavChain = 0;
+}
+
+static void SetupSkipIntroState(void)
+{
+    u16 starter;
+
+    // Give the player a Lugia
+    starter = SPECIES_LUGIA;
+    ScriptGiveMon(starter, 20, ITEM_NONE);
+    FlagSet(FLAG_SYS_POKEMON_GET);
+
+    // Set tons of flags and vars that normally happen in the intro
+    VarSet(VAR_LITTLEROOT_INTRO_STATE, 7); // Clear the whole intro
+    VarSet(VAR_LITTLEROOT_TOWN_STATE, 4); // Met Rival, Saved Birch, Received Dex, Received Shoes
+    VarSet(VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2); // Met Rivals Mom
+    VarSet(VAR_LITTLEROOT_RIVAL_STATE, 4); // Met Rival
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK);
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE);
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_BEDROOM_MOM);
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM);
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_MOM);
+    FlagSet(FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK);
+    FlagSet(FLAG_MET_RIVAL_MOM);
+
+    // Make sure Route 101 state is all managed
+    VarSet(VAR_ROUTE101_STATE, 3); // Map State: Visited, Birch Rescued
+    FlagSet(FLAG_ADVENTURE_STARTED);
+    FlagSet(FLAG_RESCUED_BIRCH); // Set the flag for Birch rescue
+    FlagSet(FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG); // Make sure Birch's bag is gone
+    FlagSet(FLAG_HIDE_ROUTE_101_ZIGZAGOON); // Hide the Zigzagoon
+    FlagSet(FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE); // Make sure Birch's zigzagoon is gone
+    VarSet(VAR_BIRCH_LAB_STATE, 2); // Idk
+
+    // Nice to haves for testing/QOL
+    FlagSet(FLAG_SYS_B_DASH);
+    FlagSet(FLAG_RUNNING_SHOES_TOGGLE);
+    FlagSet(FLAG_SYS_POKEDEX_GET);
+    VarSet(VAR_LITTLEROOT_TOWN_STATE, 4); // AGAIN
+}
+
+static void WarpToRoute101(void)
+{
+    // Set Destination to Route 101
+    SetWarpDestination(MAP_GROUP(MAP_ROUTE101), MAP_NUM(MAP_ROUTE101), WARP_ID_NONE, 9, 11);
+    WarpIntoMap();
 }

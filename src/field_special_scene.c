@@ -189,6 +189,13 @@ static void Task_Truck3(u8 taskId)
 static void Task_HandleTruckSequence(u8 taskId)
 {
    s16 *data = gTasks[taskId].data;
+   #if SKIP_INTRO
+        // Skip the whole truck animation - just make screen visible and exit
+        DrawWholeMapView();
+        DestroyTask(taskId);
+        UnlockPlayerFieldControls();
+        return;
+    #endif
 
     switch (tState)
     {
